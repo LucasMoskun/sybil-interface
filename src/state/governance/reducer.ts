@@ -10,6 +10,7 @@ import {
   updateMaxFetched
 } from './actions'
 import { createReducer } from '@reduxjs/toolkit'
+import RbnLogo from '../../assets/images/rbn-logo.png'
 import UniLogo from '../../assets/images/uni-logo.png'
 import CompLogo from '../../assets/images/compLogo.png'
 import AaveLogo from '../../assets/images/aave-logo.png'
@@ -38,6 +39,22 @@ export interface GlobaData {
   totalDelegates: number
   delegatedVotes: number
   delegatedVotesRaw: number
+}
+
+export const RBN_GOVERNANCE_ADDRESS = '0xdaeada3d210d2f45874724beea03c7d4bbd41674'//DAO Address
+export const RBN_ADDRESS = '0x6123b0049f904d730db3c36a31167d9d4121fa6b'
+const RBN = new Token(ChainId.MAINNET, RBN_ADDRESS, 18, 'RBN', 'Ribbon')
+
+export const RBN_GOVERNANCE: GovernanceInfo = {
+  id: 'ribbon',
+  name: 'Ribbon Governance',
+  logo: RbnLogo,
+  primaryColor: '#ff3d51',
+  secondaryColor: '#ffd6da',
+  token: serializeToken(RBN),
+  governanceAddress: RBN_GOVERNANCE_ADDRESS,
+  social: '@ribbonfinance',
+  emoji: '🎀'
 }
 
 // constant addresses for supported protocols
@@ -130,7 +147,8 @@ export const SUPPORTED_PROTOCOLS: { [id: string]: GovernanceInfo } = {
   compound: COMPOUND_GOVERNANCE,
   aave: AAVE_GOVERNANCE,
   pool: POOL_TOGETHER_GOVERNANCE,
-  radicle: RADICLE_GOVERNANCE
+  radicle: RADICLE_GOVERNANCE,
+  ribbon: RBN_GOVERNANCE
 }
 
 export const FETCHING_INTERVAL = 50

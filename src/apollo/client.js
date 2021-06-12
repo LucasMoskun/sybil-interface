@@ -41,3 +41,11 @@ export const radicleClient = new ApolloClient({
   cache: new InMemoryCache(),
   shouldBatch: true
 })
+
+export const rbnClient = new ApolloClient({
+  link: new HttpLink({
+    uri: 'https://api.thegraph.com/subgraphs/name/snapshot-labs/snapshot'
+  }),
+  cache: new InMemoryCache(),
+  shouldBatch: true
+})
